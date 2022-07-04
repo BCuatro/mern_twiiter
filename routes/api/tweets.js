@@ -5,15 +5,15 @@ const passport = require("passport")
 
 
 
-
-const Tweet = require("../../models/Tweet")
 const validateTweetInput = require("../../validation/tweets")
+const Tweet = require("../../models/Tweet")
+
 
 router.get('/', (req, res) => {
     Tweet.find()
         .sort({ date: -1 })
         .then(tweets => res.json(tweets))
-        .catch(err => res.status(400).json({ err }));
+        .catch(err => res.status(400).json({ notweetsfound: "No tweets found" }));
 });
 
 router.get('/user/:user_id', (req, res) => {
@@ -45,9 +45,10 @@ passport.authenticate('jwt', { session: false }),
     }
 
     const newTweet = new Tweet({
-        user: req.user.id,
-        text: req.body.text
+        text: req.body.text,
+        user: req.user.id
     });
     newTweet.save().then(tweet=> res.json(tweet));
 })
+
 module.exports = router;

@@ -16,12 +16,12 @@ mongoose
 
 //routes on app object to listen to incoming request
 app.get("/",(req,res)=> {
-    const user = new User({
-        handle: "emoney",
-        email: "emoney@money.com",
-        password:"money123"
-    })
-    user.save()
+    // const user = new User({
+    //     handle: "emoney",
+    //     email: "emoney@money.com",
+    //     password:"money123"
+    // })
+    // user.save()
     res.send("What's Poppin!");
 
 });
@@ -31,7 +31,7 @@ require('./config/passport')(passport);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use("/api/users",users );
+app.use("/api/users", users );
 app.use("/api/tweets", tweets);
 
 const port = process.env.PORT || 4000;
