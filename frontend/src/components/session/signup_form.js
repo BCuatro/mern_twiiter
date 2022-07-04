@@ -51,7 +51,7 @@ class SignupForm extends React.Component {
       render() {
          return(
             <div className = "sign-form-container">
-                <form onSumbit ={this.handleSubmit}>
+                <form onSubmit ={this.handleSubmit}>
                     <div className="signup-form"> 
                     <br/>
                         <input type ="text"
